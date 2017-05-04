@@ -94,9 +94,9 @@ server <- function(input, output, session) {
     data_current <- filteredData()
     pal <- colorpal()
     if(is.na(data_current[1,]) || (length(data_current) == 0) || is.na(data_current[length(data_current),])){
-    leafletProxy("map", data = data_current) %>% clearControls() %>% clearMarkers() %>% removeControl("legend1") %>% addCircleMarkers(radius = 1, weight = 5, opacity = 1, fill = TRUE, color = ~pal(data_current$Score), popup = paste("<br><b>Date:</b> ", data_current$Incident.Date, "</br><br><b>Type:</b> ", data_current$Type, "</br><br><b>Road Name:</b> ", data_current$Road.Name,"</br>",data_current$Score)) 
+    leafletProxy("map", data = data_current) %>% clearControls() %>% clearMarkers() %>% removeControl("legend1") %>% addCircleMarkers(radius = 1, weight = 5, opacity = 1, fill = TRUE, fillOpacity = 1, color = ~pal(data_current$Score), popup = paste("<br><b>Date:</b> ", data_current$Incident.Date, "</br><br><b>Type:</b> ", data_current$Type, "</br><br><b>Road Name:</b> ", data_current$Road.Name,"</br>",data_current$Score)) 
     }else{
-      leafletProxy("map", data = data_current) %>% clearMarkers() %>% addCircleMarkers(radius = 1, weight = 5, opacity = 1, fill = TRUE, color = ~pal(data_current$Score), popup = paste("<br><b>Date:</b> ", data_current$Incident.Date, "</br><br><b>Type:</b> ", data_current$Type, "</br><br><b>Road Name:</b> ", data_current$Road.Name,"</br>"))
+      leafletProxy("map", data = data_current) %>% clearMarkers() %>% addCircleMarkers(radius = 1, weight = 5, opacity = 1, fill = TRUE, fillOpacity = 1, color = ~pal(data_current$Score), popup = paste("<br><b>Date:</b> ", data_current$Incident.Date, "</br><br><b>Type:</b> ", data_current$Type, "</br><br><b>Road Name:</b> ", data_current$Road.Name,"</br>"))
     }
   })
 
