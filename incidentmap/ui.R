@@ -20,7 +20,7 @@ ui <- bootstrapPage(
   
   tags$style(type = "text/css", "html, body {width:100%;height:100%}"),
   
- titlePanel("Map of Albemarle County DUI Accidents and Arrests", windowTitle = "Albemarle County DUI"),
+ titlePanel("     Map of Albemarle County DUI Accidents and Arrests", windowTitle = "Albemarle County DUI"),
 br(),
 sidebarPanel(
   
