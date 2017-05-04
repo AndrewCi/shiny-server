@@ -1,5 +1,5 @@
 
-
+runtime: shiny
 library("leaflet")
 library("htmltools")
 library("shiny")
