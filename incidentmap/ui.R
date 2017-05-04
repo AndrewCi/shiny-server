@@ -5,7 +5,16 @@ library("shiny")
 library("RColorBrewer")
 library("dplyr")
 
+incident_data <- read.csv('Incident_Data.csv',header=TRUE,sep=',',stringsAsFactors=FALSE)
 
+incident_data$Latitude  <- gsub(",","",incident_data$Latitude)
+incident_data$Latitude <- as.numeric(as.character(incident_data$Latitude))
+
+incident_data$Longitude  <- gsub(",","",incident_data$Longitude)
+incident_data$Longitude <- as.numeric(as.character(incident_data$Longitude))
+
+incident_data$Score  <- gsub(",","",incident_data$Score)
+incident_data$Score <- as.numeric(as.character(incident_data$Score))
 
 ui <- bootstrapPage(
   
