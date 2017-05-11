@@ -80,11 +80,11 @@ if(input$dataDisplay == "R20"){
     colorNumeric(palette = c("#fee0d2","#fcbba1","#fc9272","#fb6a4a","#ef3b2c","#cb181d","#a50f15","#67000d"), domain = data_current2$Density.Score)
     
     }else if(input$dataDisplay == "RS20"){
-
+      data_current2 <- data_current2[data_current2$Seg.Density.Score <= .5,]
       colorNumeric(palette = c("#fee0d2","#fcbba1","#fc9272","#fb6a4a","#ef3b2c","#cb181d","#a50f15","#67000d"), domain = data_current2$Seg.Density.Score)
       
     }else if(input$dataDisplay == "S50"){
-      
+      data_current2 <- data_current2[data_current2$Seg.Density.Score <= .5,]
       colorNumeric(palette = c("#fee0d2","#fcbba1","#fc9272","#fb6a4a","#ef3b2c","#cb181d","#a50f15","#67000d"), domain = data_current2$Seg.Density.Score)
       
       
@@ -94,6 +94,7 @@ if(input$dataDisplay == "R20"){
       
       
     }else if(input$dataDisplay == "RSA"){
+      data_current2 <- data_current2[data_current2$Seg.Density.Score <= .5,]
       colorNumeric(palette = c("#fee0d2","#fcbba1","#fc9272","#fb6a4a","#ef3b2c","#cb181d","#a50f15","#67000d"), domain = data_current2$Seg.Density.Score)
     }
 
@@ -105,12 +106,12 @@ if(input$dataDisplay == "R20"){
     if(input$dataDisplay == "R20"){
 
     colorNumeric(palette = c("#67000d","#a50f15","#cb181d","#ef3b2c","#fb6a4a","#fc9272","#fcbba1","#fee0d2"), domain = data_current5$Density.Score)}else if(input$dataDisplay == "RS20"){
-
+    
       colorNumeric(palette = c("#67000d","#a50f15","#cb181d","#ef3b2c","#fb6a4a","#fc9272","#fcbba1","#fee0d2"), domain = data_current5$Seg.Density.Score)
 
 
     }else if(input$dataDisplay == "S50"){
-      
+  
       colorNumeric(palette = c("#67000d","#a50f15","#cb181d","#ef3b2c","#fb6a4a","#fc9272","#fcbba1","#fee0d2"), domain = data_current5$Seg.Density.Score)
       
     }else if(input$dataDisplay == "RA"){
@@ -139,7 +140,7 @@ if(input$dataDisplay == "R20"){
       leafletProxy("map", data = data_current) %>% clearMarkers() %>% addCircleMarkers(radius = 3, weight = 1, opacity = 1, fill = TRUE, fillOpacity = 1, color = ~pal(data_current$Density.Score), popup = paste("<br><b>Date:</b> ", data_current$Incident.Date, "</br><br><b>Type:</b> ", data_current$Type, "</br><br><b>Road Name:</b> ", data_current$Road.Name,"</br>"))
     }
     }else if(input$dataDisplay == "RS20"){
-
+      pal <- colorpal()
       if(is.na(data_current[1,]) || (length(data_current) == 0) || is.na(data_current[length(data_current),])){
         leafletProxy("map", data = data_current) %>% clearControls() %>% clearMarkers() %>% removeControl("legend1") %>% addCircleMarkers(radius = 1, weight = 5, opacity = 1, fill = FALSE, color = ~pal(data_current$Seg.Density.Score), popup = paste("<br><b>Date:</b> ", data_current$Incident.Date, "</br><br><b>Type:</b> ", data_current$Type, "</br><br><b>Road Name:</b> ", data_current$Road.Name,"</br>")) 
       }else{
@@ -148,7 +149,7 @@ if(input$dataDisplay == "R20"){
       
       
     }else if(input$dataDisplay == "S50"){
-      
+      pal <- colorpal()
       if(is.na(data_current[1,]) || (length(data_current) == 0) || is.na(data_current[length(data_current),])){
         leafletProxy("map", data = data_current) %>% clearControls() %>% clearMarkers() %>% removeControl("legend1") %>% addCircleMarkers(radius = 1, weight = 5, opacity = 1, fill = FALSE, color = ~pal(data_current$Seg.Density.Score), popup = paste("<br><b>Date:</b> ", data_current$Incident.Date, "</br><br><b>Type:</b> ", data_current$Type, "</br><br><b>Road Name:</b> ", data_current$Road.Name,"</br>")) 
       }else{
@@ -166,7 +167,7 @@ if(input$dataDisplay == "R20"){
       
       
     }else if(input$dataDisplay == "RSA"){
-      
+      pal <- colorpal()
       if(is.na(data_current[1,]) || (length(data_current) == 0) || is.na(data_current[length(data_current),])){
         leafletProxy("map", data = data_current) %>% clearControls() %>% clearMarkers() %>% removeControl("legend1") %>% addCircleMarkers(radius = 1, weight = 5, opacity = 1, fill = FALSE, color = ~pal(data_current$Seg.Density.Score), popup = paste("<br><b>Date:</b> ", data_current$Incident.Date, "</br><br><b>Type:</b> ", data_current$Type, "</br><br><b>Road Name:</b> ", data_current$Road.Name,"</br>")) 
       }else{
@@ -366,7 +367,7 @@ if(input$dataDisplay == "R20"){
         leafletProxy("map1", data = data_current1) %>% clearMarkers() %>% addCircleMarkers(radius = 3, weight = 1, opacity = 1, fill = TRUE, fillOpacity = 1, color = ~pal(data_current1$DD.Check.Score), popup = paste("<br><b>Date:</b> ", data_current1$Incident.Date, "</br><br><b>Type:</b> ", data_current1$Type, "</br><br><b>Road Name:</b> ", data_current1$Road.Name,"</br>"))
       }
     }else if(input$dataDisplay1 == "RS20"){
-      
+      pal <- colorpal1()
       if(is.na(data_current1[1,]) || (length(data_current1) == 0) || is.na(data_current1[length(data_current1),])){
         leafletProxy("map1", data = data_current1) %>% clearControls() %>% clearMarkers() %>% removeControl("legend1") %>% addCircleMarkers(radius = 1, weight = 5, opacity = 1, fill = FALSE, color = ~pal(data_current1$Seg.DD.Check.Score), popup = paste("<br><b>Date:</b> ", data_current1$Incident.Date, "</br><br><b>Type:</b> ", data_current1$Type, "</br><br><b>Road Name:</b> ", data_current1$Road.Name,"</br>")) 
       }else{
@@ -375,7 +376,7 @@ if(input$dataDisplay == "R20"){
       
       
     }else if(input$dataDisplay1 == "S50"){
-      
+      pal <- colorpal1()
       if(is.na(data_current1[1,]) || (length(data_current1) == 0) || is.na(data_current1[length(data_current1),])){
         leafletProxy("map1", data = data_current1) %>% clearControls() %>% clearMarkers() %>% removeControl("legend1") %>% addCircleMarkers(radius = 1, weight = 5, opacity = 1, fill = FALSE, color = ~pal(data_current1$Seg.DD.Check.Score), popup = paste("<br><b>Date:</b> ", data_current1$Incident.Date, "</br><br><b>Type:</b> ", data_current1$Type, "</br><br><b>Road Name:</b> ", data_current1$Road.Name,"</br>")) 
       }else{
@@ -383,7 +384,7 @@ if(input$dataDisplay == "R20"){
       }
       
     }else if(input$dataDisplay1 == "RA"){
-      
+    
       pal <- colorpal1()
       if(is.na(data_current1[1,]) || (length(data_current1) == 0) || is.na(data_current1[length(data_current1),])){
         leafletProxy("map1", data = data_current1) %>% clearControls() %>% clearMarkers() %>% removeControl("legend1") %>% addCircleMarkers(radius = 1, weight = 5, opacity = 1, fill = FALSE, color = ~pal(data_current1$DD.Check.Score), popup = paste("<br><b>Date:</b> ", data_current1$Incident.Date, "</br><br><b>Type:</b> ", data_current1$Type, "</br><br><b>Road Name:</b> ", data_current1$Road.Name,"</br>")) 
@@ -393,7 +394,7 @@ if(input$dataDisplay == "R20"){
       
       
     }else if(input$dataDisplay1 == "RSA"){
-      
+      pal <- colorpal1()
       if(is.na(data_current1[1,]) || (length(data_current1) == 0) || is.na(data_current1[length(data_current1),])){
         leafletProxy("map1", data = data_current1) %>% clearControls() %>% clearMarkers() %>% removeControl("legend1") %>% addCircleMarkers(radius = 1, weight = 5, opacity = 1, fill = FALSE, color = ~pal(data_current1$Seg.DD.Check.Score), popup = paste("<br><b>Date:</b> ", data_current1$Incident.Date, "</br><br><b>Type:</b> ", data_current1$Type, "</br><br><b>Road Name:</b> ", data_current1$Road.Name,"</br>")) 
       }else{
