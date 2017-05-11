@@ -6,9 +6,6 @@ library("RColorBrewer")
 library("dplyr")
 library("DT")
 
-route_table <- read.csv('Route_Table.csv',header=TRUE,sep=',',stringsAsFactors=FALSE, check.names = FALSE)
-segment_table <- read.csv('Segment_Table.csv',header=TRUE,sep=',',stringsAsFactors=FALSE, check.names = FALSE)
-
 incident_data <- read.csv('Raw_Incident_Data.csv',header=TRUE,sep=',',stringsAsFactors=FALSE)
 
 incident_data$Latitude  <- gsub(",","",incident_data$Latitude)
